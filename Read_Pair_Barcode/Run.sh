@@ -59,15 +59,6 @@ perl ${SCRIPTDIR}/SNP_Strand.pl ./Coverage.default.mRNA ./${WORKDIR}.Consensuse.
 cp ./${WORKDIR}.Strand.SNP /Dell/Dell13/shankj/projects/Cov/TranscriptionError/Ours/SNP/bin2/ #Which dir you want to copy to
 #########################################################################################################################
 
-#Somatic minus
-#Just some examples, you should change your files to obtain your results
-
-#########################################################################################################################
-
-#perl /Dell/Dell13/shankj/projects/Cov/TranscriptionError/Ours/bin/Somatic_mutation.pl ./Ctrl2.Consensuse.Mismatch.Strand ./H2O2-1h-2.Consensuse.Mismatch.Strand > R2.somatic
-#perl /Dell/Dell13/shankj/projects/Cov/TranscriptionError/Ours/bin/Somatic_mutation_minus.pl R2.somatic ./Ctrl2.Strand.SN ./H2O2-1h-2.Strand.SNP
-
-
 
 #########################################################################################################################
 
