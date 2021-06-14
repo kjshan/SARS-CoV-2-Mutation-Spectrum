@@ -77,7 +77,8 @@ rm ../CV_Unique.Junction.read.mpileup
 ls |grep -v list > list.txt
 parallel  -j 10 "perl UMI_mutation_count_V2.pl  ../SCV2_Unique_UMI.txt ./{} > ./{}.out" :::: list.txt
 cat ./*.out > ../SCV2.Unique.Perl.JCR.summarise
-parallel  -j 10 "perl Mutation_Rate.pl {} " :::: list.txt  > ../Consensus_read.out (ATCG content in consensus sites)
+parallel  -j 10 "perl Mutation_Rate.pl {} " :::: list.txt  > ../Consensus_read.out #(ATCG content in consensus sites, 26257-26283 should be discarded)
+
 perl Coverage_consensus_reads.pl ../Consensus_read.out > ../Coverage_consensus_reads.txt
 
 cd ../
