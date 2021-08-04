@@ -46,15 +46,11 @@ for (i in unique(count$V6)) {
 
 head(odds)
 Polymorphism<-data.frame(sample="SARS-CoV-2 polymorphism",P1=3.631382e-188, odds1=6.2237,P2=1.033515e-199, odds2=3.797579)
-Mutation<-data.frame(sample="SARS-CoV-2 mutation",P1=0.0006921, odds1=4.30847,P2=3.321e-05, odds2=3.156054)
-
-RatTG13<-data.frame(sample="MRCA to RaTG13",P1=0.4931, odds1=0.6802504,P2=3.338e-10, odds2=2.652908)
-Wuhan<-data.frame(sample="MRCA to SARS-CoV-2",P1=0.6202, odds1=0.7274847,P2=3.782e-15, odds2=4.048949 )
 
 #fisher.test(matrix(c(51,15,2354397,2185628),nrow = 2))
 #fisher.test(matrix(c(6,24,2354397,2185628),nrow = 2))
 
-odds<-rbind(odds,Polymorphism,Mutation,RatTG13,Wuhan)
+odds<-rbind(odds,Polymorphism)
 tail(odds)
 
 
