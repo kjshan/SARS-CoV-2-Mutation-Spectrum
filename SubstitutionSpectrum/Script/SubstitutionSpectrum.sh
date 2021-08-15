@@ -57,7 +57,8 @@ mkdir Astr
 cd Astr
 perl /Dell/Dell13/shankj/bin/FastML.v3.11/www/fastml/FastML_Wrapper.pl --MSA_File ../result.fas --seqType  NUC --outDir ../Astr > fastML.out 
 perl /Dell/Dell13/shankj/projects/Cov/Genome/Fig6/MERS/Astr/Astr_Branch.pl SCV2 > SCV2_SNP.count
-
+perl RemoveColGapFromHuman.pl seq.joint.txt HUMAN > Annotation.seq
+perl Astr_Branch_Annotation.pl 
 
 cd /Dell/Dell13/shankj/projects/Cov/Genome/Fig6/20210711/SARS/Astr/
 perl /Dell/Dell13/shankj/projects/Cov/Genome/Fig6/MERS/Astr/Astr_Branch.pl SARS > ../SARS_SNP.count
