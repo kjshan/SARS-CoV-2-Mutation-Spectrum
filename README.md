@@ -3,7 +3,5 @@ Here, we characterize the molecular spectrum of de novo mutations for SARS-CoV-2
 
 For pipline:
 There are two directories, Script and Result, under each folder. 
-
 The shell script in the Script directory contains the process and interpretations of using these scripts. 
-
 The Result directory contains the intermediate results and the final results shown in the manuscript.
