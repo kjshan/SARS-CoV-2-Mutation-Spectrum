@@ -26,7 +26,7 @@ while (my $line=<IN>) {
 		 #$SNP[4]=~ tr/a-z/A-z/;
 		  my $count=0;
 		while ($SNP[4]=~/[\-|\+][0-9]+[A|T|C|G|a|t|c|g]+/gi) {#|\d
-			$mutation{uc($&)}+=1;#SNP count
+			my $med=uc($&);
 			my $mid11=uc($&);
 			my $mid33=uc($&);
 			$mid11=~s/[A|T|C|G|a|t|c|g]+//gi;
@@ -34,15 +34,19 @@ while (my $line=<IN>) {
 			$mid11=~s/[\-|\+]//gi;
 			my $indel_len=$mid11+length($mid22);
 			$count+=$indel_len;
-			
+
+			$med=~s/[\-|\+][0-9]+//gi;;
+			my $indel12=substr($med,0,$mid11);
+			$mutation{("$mid22"."$indel12")}+=1;#SNP count
+
 			my $site;
 			$site=(pos $SNP[4])-$count-1;
 			my $mid1=$read[($site)];#read
-			$UMI_read{uc($mid33)}.="$mid1,";
+			$UMI_read{("$mid22"."$indel12")}.="$mid1,";
 
 			my @read_POS=split /,/,$SNP[6];
 			my $mid2=$read_POS[($site)];#read
-			$UMI_read_POS{uc($mid33)}.="$mid2,";
+			$UMI_read_POS{("$mid22"."$indel12")}.="$mid2,";
 		}
 
 		#read pair number
