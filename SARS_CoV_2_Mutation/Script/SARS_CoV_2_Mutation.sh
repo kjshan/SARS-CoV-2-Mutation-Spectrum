@@ -74,10 +74,11 @@ samtools mpileup --max-depth  0 --output-BP --output-QNAME -a --reference /Dell/
 cd JCR_mpileup
 split -l 30 ../CV_Unique.Junction.read.mpileup -d -a 4
 rm ../CV_Unique.Junction.read.mpileup
-ls |grep -v list > list.txt
-parallel  -j 10 "perl UMI_mutation_count_V2.pl  ../SCV2_Unique_UMI.txt ./{} > ./{}.out" :::: list.txt
-cat ./*.out > ../SCV2.Unique.Perl.JCR.summarise
-parallel  -j 10 "perl Mutation_Rate.pl {} " :::: list.txt  > ../Consensus_read.out #(ATCG content in consensus sites, 26257-26283 should be discarded)
+cd Sam_split
+perl ../Sam_split.pl ../CV_Unique.Junction.read.sam ../SCV2_Unique_UMI.txt > list.txt
+parallel -j 50 "samtools sort {} -o ./{}.bam" :::: list.txt
+parallel -j 50 "samtools mpileup -d 0 --reference /Dell/Dell9/shankj/Cov/RTmutation/SARS-CoV-2/SARS_CoV_2/NC_045512.2.fna --output-QNAME --output-BP {}.bam -o ./{}.mpileup.default" :::: list.txt
+parallel -j 50 "perl ../Mutation_Rate.pl {}.mpileup.default " :::: list.txt > ../Consensus_read.out #(ATCG content in consensus sites, 26257-26283 should be discarded)
 
 perl Coverage_consensus_reads.pl ../Consensus_read.out > ../Coverage_consensus_reads.txt
 
